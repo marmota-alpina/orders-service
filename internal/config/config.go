@@ -12,6 +12,8 @@ type Config struct {
 	DBHost     string
 	DBPort     string
 	SSLMode    string
+	ServerHost string
+	ServerPort string
 }
 
 func LoadConfig() *Config {
@@ -23,6 +25,8 @@ func LoadConfig() *Config {
 		DBHost:     os.Getenv("DB_HOST"),
 		DBPort:     os.Getenv("DB_PORT"),
 		SSLMode:    os.Getenv("DB_SSL_MODE"),
+		ServerHost: os.Getenv("SERVER_HOST"),
+		ServerPort: os.Getenv("SERVER_PORT"),
 	}
 }
 

@@ -5,26 +5,26 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	_ "github.com/lib/pq"
-	"github.com/marmota-alpina/orders-service/internal/config"
+	"github.com/marmota-alpina/orders-service/internal/db"
 	"github.com/marmota-alpina/orders-service/internal/order"
 	"log"
 )
 
 func main() {
-	cfg := config.LoadConfig()
+	database, err := db.GetDatabase()
 
-	db, err := sql.Open("postgres", cfg.GetURL())
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	defer func(db *sql.DB) {
 		err := db.Close()
 		if err != nil {
 			log.Fatal(err)
 		}
-	}(db)
+	}(database)
 
-	repo := order.NewRepository(db)
+	repo := order.NewRepository(database)
 	handler := order.NewHandler(repo)
 
 	e := echo.New()
