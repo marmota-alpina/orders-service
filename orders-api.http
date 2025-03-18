@@ -1,0 +1,26 @@
+### Criar um pedido
+POST http://localhost:8080/orders
+Content-Type: application/json
+
+{
+  "customer_name": "Jefferson Silva",
+  "total_amount": 99.90
+}
+
+### Listar todos os pedidos
+GET http://localhost:8080/orders
+
+### Buscar um pedido pelo ID (substitua {id} pelo ID real)
+GET http://localhost:8080/orders/1
+
+### Atualizar um pedido (substitua {id} pelo ID real)
+PUT http://localhost:8080/orders/1
+Content-Type: application/json
+
+{
+  "customer_name": "Maria Oliveira",
+  "total_amount": 149.90
+}
+
+### Deletar um pedido (substitua {id} pelo ID real)
+DELETE http://localhost:8080/orders/1
